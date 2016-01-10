@@ -1,0 +1,62 @@
+{
+  "name": "trip-browserify",
+  "description": "Bundles scripts with Browserify",
+  "version": "0.0.0",
+  "author": "Callum Locke",
+  "babel": {
+    "presets": [
+      "es2015-node4"
+    ],
+    "plugins": [
+      [
+        "transform-async-to-module-method",
+        {
+          "module": "bluebird",
+          "method": "coroutine"
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "bluebird": "^3.1.1",
+    "browser-resolve-noio": "^1.4.1",
+    "browserify": "^13.0.0",
+    "defined": "^1.0.0",
+    "graceful-fs": "^4.1.2",
+    "has": "^1.0.1",
+    "insert-module-globals": "^7.0.1",
+    "lazy-builder": "^0.0.3",
+    "lodash": "^3.10.1",
+    "micromatch": "^2.3.7",
+    "module-deps-diskless": "^3.8.1",
+    "streamifier": "^0.1.1",
+    "subdir": "0.0.3",
+    "xtend": "^4.0.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.4.0",
+    "babel-eslint": "^5.0.0-beta6",
+    "babel-plugin-transform-async-to-module-method": "^6.4.0",
+    "babel-preset-es2015-node4": "^2.0.2",
+    "eslint": "^1.10.3",
+    "eslint-config-trip": "^1.0.1",
+    "eslint-plugin-babel": "^3.0.0",
+    "rimraf": "^2.5.0"
+  },
+  "eslintConfig": {
+    "extends": "trip"
+  },
+  "files": [
+    "dist"
+  ],
+  "jsnext:main": "src/index.js",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "repository": "tripjs/trip-browserify",
+  "scripts": {
+    "build": "rimraf dist && babel src --out-dir dist --source-maps",
+    "buildwatch": "rimraf dist && babel src --out-dir dist --source-maps --watch",
+    "prepublish": "npm run build",
+    "test": "eslint ."
+  }
+}
